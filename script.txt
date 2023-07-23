@@ -1,0 +1,1 @@
+python main.py --dataset_dir /mnt2/sky/dataset/recaptcha-dataset/Large/ --batch_size 32 --epoch 20 --lr 0.001 --output ./
