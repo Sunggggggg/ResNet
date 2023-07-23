@@ -1,7 +1,8 @@
 import warnings
 warnings.filterwarnings("ignore")
 
-import torch, torchvision, os, time, tqdm, argparse, random
+import torch, torchvision, os, time, argparse, random
+from tqdm import tqdm
 import torch.nn as nn
 import torch.optim as optim
 import numpy as np
@@ -103,5 +104,5 @@ if __name__ == "__main__" :
         num_ftrs = model.fc.in_features
         model.fc = nn.Linear(num_ftrs, num_classes)
         model = model.to(device)
-    train_model(model = model, device = device, train_loader=train_loader, valid_loader=val_loader, weights_path =output_name, epochs=epochs, lr=lr)
-    torch.save(train_model, output_name + '/final_model.pth')
+    model = train_model(model = model, device = device, train_loader=train_loader, valid_loader=val_loader, weights_path =output_name, epochs=epochs, lr=lr)
+    torch.save(model, output_name + '/final_model.pth')
